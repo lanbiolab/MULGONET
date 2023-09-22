@@ -31,8 +31,8 @@ tensorflow==1.12.0
 
 ### Training
 
-Unzip PAAD dataset <br>
-run training.py
+1.unzip PAAD dataset <br>
+2.run training.py
 
 
 
