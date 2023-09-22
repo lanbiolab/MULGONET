@@ -14,6 +14,8 @@ from MULGONET import create_model
 
 from weight_coef import get_important_score
 
+from Comparison import Creat_RBFSVM
+
 
 # Define a learning rate update function
 def myScheduler(epoch):
@@ -95,7 +97,7 @@ for i in range(0,1):
 
         y_pred = models.predict(multi_data_test_x)
 
-
+        print('pre, acc, rec, f1, auc, aupr, auprc')
         print(evaluates(multi_data_test_y, y_pred))
 
         kfscore.append(evaluates(multi_data_test_y, y_pred))
@@ -109,9 +111,30 @@ for i in range(0,1):
 
     #Average value
     kfscore = np.array(kfscore).sum(axis= 0)/5.0     #pre,acc,rec,auc
+    print('Cross validated mean score : pre, acc, rec, f1, auc, aupr, auprc')
     print(kfscore)
     total_score.append(kfscore)
-total_score
+
+print(total_score)
+
+
+
+# concatong_date
+tol_data = pd.concat([meth_data,cnv_amp,cnv_del,exp_data],axis= 1)
+multi_data_train = tol_data.values
+
+#svm
+skf = StratifiedKFold(n_splits=5, shuffle=True)
+kfscore = []
+
+for train_index, test_index in skf.split(multi_data_train, multi_data_test):
+    score = list(Creat_RBFSVM(multi_data_train, multi_data_test, train_index, test_index,class_weight={0:x_0,1:x_1}))
+    print('pre, acc, rec, f1, auc, aupr, auprc')
+    print(score)
+    kfscore.append(score)
+
+print('Cross validated mean score : pre, acc, rec, f1, auc, aupr, auprc')
+print(np.array(kfscore).sum(axis=0) / 5.0)
 
 
 
