@@ -14,6 +14,7 @@ Overview of the MULGONET framework. (a) Data processing. Collection and preproce
 MULGONET.py: MULGONET model <br>
 evaluates.py: Evaluation functions  <br>
 preprocessing.py : Data preprocessing  <br>
+Comparison.py ：  Comparison methods  <br>
 training.py: Training and testing functions  <br>
 weight_coef.py: Feature importance functions  <br>
 single_inputs_IntegratedGradients:  IntegratedGradients methods <br>
