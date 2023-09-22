@@ -15,6 +15,8 @@ evaluates.py: Evaluation functions  <br>
 preprocessing.py : Data preprocessing  <br>
 training.py: Training and testing functions  <br>
 weight_coef.py: Feature importance functions  <br>
+single_inputs_IntegratedGradients:  IntegratedGradients methods <br>
+data : includes annotation files, GO pathway hierarchy relationships, PAAD dataset <br>
 
 ### Running environment
 python==3.6.2  
@@ -24,6 +26,11 @@ networkx==2.5.1
 scikit-learn == 0.24.2  
 keras==2.2.4  
 tensorflow==1.12.0  
+
+### Training
+
+Unzip PAAD dataset
+run training.py
 
 
 
